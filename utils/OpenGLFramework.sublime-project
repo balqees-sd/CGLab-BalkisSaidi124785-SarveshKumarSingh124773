@@ -1,0 +1,47 @@
+{
+    "folders":
+    [
+        {
+            "follow_symlinks": true,
+            "path": "..",
+            "folder_exclude_patterns": ["install", "build"],
+            "file_exclude_patterns": ["*.nfs*", "*~"]
+        }
+    ],
+    "build_systems":
+    [
+      {
+        "name": "OpenGLFramework",
+        "file_regex": "^(..[^:]*):(.*)$",
+        "working_dir": "${project_path}/../build",
+        "cmd":  ["make", "-j4"],
+        "variants":
+        [
+            {
+                "name": "Run",
+                "cmd": ["${project_path}/../build/Debug/solar_system"],
+            },
+            {
+                "name": "Build and run",
+                "cmd": ["make -j4 && ./Debug/solar_system"],
+                "working_dir": "${project_path}/../build",
+                "shell":true
+            },
+            {
+                "name": "Build and Debug",
+                "linux":
+                {
+                    "cmd": ["gnome-terminal -- make -j4 -d && gnome-terminal -- gdb ./Debug/solar_system"]
+                },
+                "windows":
+                {
+                    "cmd": ["start cmd /k make -j4 -d && gdb ./Debug/solar_system"]
+                },
+                "working_dir": "${project_path}/../build",
+                "shell":true
+            }
+
+        ]
+      }
+    ]
+}
