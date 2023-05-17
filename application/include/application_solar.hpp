@@ -5,6 +5,7 @@
 #include "model.hpp"
 #include "structs.hpp"
 #include "scene_graph.hpp"
+#include "string"
 
 // gpu representation of model
 class ApplicationSolar : public Application {
@@ -37,6 +38,9 @@ class ApplicationSolar : public Application {
 
   // cpu representation of model
   model_object planet_object;
+  model_object stars_object;
+  model_object orbits_object;
+
   // scenegraph
   SceneGraph* scenegraph_;
 
@@ -44,6 +48,14 @@ class ApplicationSolar : public Application {
   glm::fmat4 m_view_transform;
   // camera projection matrix
   glm::fmat4 m_view_projection;
+  
+  // init and render individual geometry
+  void initializePlanets();
+  void initializeStars();
+  void initializeOrbits();
+  void renderPlanets() const;
+  void renderStars() const;
+  void renderOrbits() const;
 };
 
 #endif
