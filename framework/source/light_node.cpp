@@ -1,41 +1,41 @@
 #include "light_node.hpp"
 
 LightNode::LightNode(std::string name,  
-	double strength, 
-	color clr) :
-	Node(name), strength_(strength), color_(clr)
+	double lightIntensity, 
+	color lightClr) :
+	Node(name), lightIntensity_(lightIntensity), lightColor_(lightClr)
 {
 }
 
 LightNode::LightNode(std::string name, 
 	std::shared_ptr<Node> parent, 
-	double strength,
-	color clr) :
-	Node(name, parent), strength_(strength), color_(clr)
+	double lightIntensity,
+	color lightClr) :
+	Node(name, parent), lightIntensity_(lightIntensity), lightColor_(lightClr)
 {
 }
 
 LightNode::LightNode(std::string name,
 	std::shared_ptr<Node> parent,
 	glm::mat4x4 localTransform,
-	double strength,
-	color clr):
-	Node(name, parent, localTransform), strength_(strength), color_(clr)
+	double lightIntensity,
+	color lightClr):
+	Node(name, parent, localTransform), lightIntensity_(lightIntensity), lightColor_(lightClr)
 {
 }
 
-color LightNode::getColor() {
-	return color_;
+color LightNode::getLightColor() {
+	return lightColor_;
 }
 
-void LightNode::setColor(color clr) {
-	color_ = clr;
+void LightNode::setLightColor(color lightClr) {
+	lightColor_ = lightClr;
 }
 
-double LightNode::getStrength() {
-	return strength_;
+double LightNode::getLightIntensity() {
+	return lightIntensity_;
 }
 
-void LightNode::setStrength(double strength) {
-	strength_ = strength;
+void LightNode::setLightIntensity(double lightIntensity) {
+	lightIntensity_ = lightIntensity;
 }

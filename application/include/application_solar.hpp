@@ -44,6 +44,8 @@ class ApplicationSolar : public Application {
   // scenegraph
   SceneGraph* scenegraph_;
 
+  std::string m_current_planet_shader;
+
   // camera transform matrix
   glm::fmat4 m_view_transform;
   // camera projection matrix
@@ -53,7 +55,7 @@ class ApplicationSolar : public Application {
   void initializePlanets();
   void initializeStars();
   void initializeOrbits();
-  void renderPlanets() const;
+  void renderPlanets(std::string const& planet_shader) const;
   void renderStars() const;
   void renderOrbits() const;
 };
