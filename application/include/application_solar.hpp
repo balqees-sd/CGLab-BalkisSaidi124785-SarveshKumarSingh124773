@@ -38,12 +38,16 @@ class ApplicationSolar : public Application {
   
   //texture init
   void initializeTextures();
+  bool initializeFramebuffer(unsigned width, unsigned height);
+  void initializeScreenquad();
   
   // cpu representation of model
   model_object planet_object;
   model_object stars_object;
   model_object orbits_object;
   model_object skybox_object;
+  model_object screenquad_object;
+  framebuffer_object framebuffer_obj;
 
   // vector of planet names
   std::vector<std::string> m_planet_names;
@@ -75,6 +79,15 @@ class ApplicationSolar : public Application {
   void renderStars() const;
   void renderOrbits() const;
   void renderSkybox() const;
+  void renderQuad() const;
+
+  private:
+  bool horizontal_mirroring = false;
+  bool vertical_mirroring = false;
+  bool greyscale = false;
+  bool blur = false;
+  unsigned img_width;
+  unsigned img_height;
 };
 
 #endif
